@@ -33,45 +33,45 @@ const Features = () => {
           Thư viện Blue Edu phù hợp với ai?
         </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10 items-stretch">
           {/* LEFT: 4 feature cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:col-span-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:col-span-2 h-full">
             {loading
               ? Array.from({ length: 4 }).map((_, i) => (
-                  <FeatureSkeleton key={i} />
-                ))
+                <FeatureSkeleton key={i} />
+              ))
               : features.slice(0, 4).map((item, i) => (
-                  <div
-                    key={i}
-                    className="bg-white rounded-2xl border border-gray-200 hover:bg-gray-100 hover:scale-100 transition-all duration-300 p-5 shadow-lg flex flex-col items-center justify-center"
-                  >
-                    <Image
-                      src={item.imgSrc}
-                      alt={item.heading}
-                      width={55}
-                      height={55}
-                      className="mb-2 "
-                    />
-                    <h3 className="text-base lg:text-lg text-center text-gray-700 mt-4">
-                      {item.heading}
-                    </h3>
-                    <p className="text-base text-black/50 mt-2 leading-6">
-                      {item.paragraph}
-                    </p>
-                  </div>
-                ))}
+                <div
+                  key={i}
+                  className="bg-white rounded-2xl border border-gray-200 hover:bg-gray-100 hover:scale-100 transition-all duration-300 p-5 shadow-lg flex flex-col items-center justify-center"
+                >
+                  <Image
+                    src={item.imgSrc}
+                    alt={item.heading}
+                    width={55}
+                    height={55}
+                    className="mb-2 "
+                  />
+                  <h3 className="text-base lg:text-lg text-center text-gray-700 mt-4">
+                    {item.heading}
+                  </h3>
+                  <p className="text-base text-black/50 mt-2 leading-6">
+                    {item.paragraph}
+                  </p>
+                </div>
+              ))}
           </div>
 
           {/* RIGHT: Image box */}
-          <div className="relative rounded-2xl border border-gray-200 overflow-hidden shadow-lg lg:row-span-2">
+          <div className="relative rounded-2xl border border-gray-200 overflow-hidden shadow-lg h-full min-h-[300px] md:min-h-[400px] lg:min-h-0">
             <Image
               src="/images/feature-big.jpg" // đổi thành ảnh của bạn
               alt="Feature Image"
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33.33vw"
             />
-            fewf
           </div>
         </div>
       </div>
