@@ -1,150 +1,137 @@
-'use client'
-import { SetStateAction, useEffect, useState } from 'react'
-import Image from 'next/image'
-import { Icon } from '@iconify/react/dist/iconify.js'
-import { plansData } from '@/app/types/plans'
-import PlansSkeleton from '@/app/Skeleton/Plans'
+"use client";
+
+import Image from "next/image";
+import SignUp from "../../Auth/SignUp";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { useEffect, useRef, useState } from "react";
 
 const Pricing = () => {
-  const [plans, setPlans] = useState<plansData[]>([])
-  const [loading, setLoading] = useState(true)
+  const [sticky, setSticky] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
+  const signUpRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    setSticky(window.scrollY >= 80);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      signUpRef.current &&
+      !signUpRef.current.contains(event.target as Node)
+    ) {
+      setIsSignUpOpen(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/data')
-        if (!res.ok) throw new Error('Failed to fetch')
-        const data = await res.json()
-        setPlans(data.PlansData)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      } finally {
-        setLoading(false)
-      }
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isSignUpOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-    fetchData()
-  }, [])
-
-  const [selectedCategory, setSelectedCategory] = useState<
-    'monthly' | 'yearly'
-  >('yearly')
-
-  const handleCategoryChange = (
-    category: SetStateAction<'monthly' | 'yearly'>
-  ) => {
-    setSelectedCategory(category)
-  }
-
-  const filteredData = plans.filter((item) =>
-    item.category.includes(selectedCategory)
-  )
+  }, [isSignUpOpen]);
+  const benefits = [
+    {
+      icon: "/images/pricing/setting1.svg",
+      text: "Hỗ trợ sau khóa học, tư vấn 1-1 từ chuyên gia",
+    },
+    {
+      icon: "/images/pricing/setting1.svg",
+      text: "Toàn bộ nội dung khóa học với 10 buổi học chất lượng cao",
+    },
+    {
+      icon: "/images/pricing/setting1.svg",
+      text: "Bài tập thực hành, dự án thực tế giúp bạn áp dụng ngay",
+    },
+    {
+      icon: "/images/pricing/setting1.svg",
+      text: "Phát triển nhanh hoàn thành khóa học, nâng tầm hồ sơ nghề nghiệp",
+    },
+    {
+      icon: "/images/pricing/setting1.svg",
+      text: "Phát triển nhanh hoàn thành khóa học, nâng tầm hồ sơ nghề nghiệp",
+    },
+  ];
 
   return (
-    <section id='pricing' className='bg-header relative py-20'>
-      <Image
-        src='/images/pricing/upperline.png'
-        alt='upperline-image'
-        width={280}
-        height={219}
-        className='absolute top-[160px] left-[90px] hidden sm:block opacity-5'
-      />
-      <Image
-        src='/images/pricing/lowerline.png'
-        alt='lowerline-image'
-        width={180}
-        height={100}
-        className='absolute bottom-[0px] right-[90px] opacity-5'
-      />
-      <div className='container px-4'>
-        <h2 className='text-center'>Our Pricing Plan.</h2>
-
-        <p className='text-lg font-normal text-center text-black/60 pt-5 max-w-2xl mx-auto'>
-          Simple, transparent, and built to scale with your needs. Choose the plan that fits your lifestyle — no hidden fees, ever.
-        </p>
+    <section id="pricing" className="bg-header relative py-20">
+      <div className="container px-4">
+        <h1 className="text-center text-3xl md:text-2xl">
+          Hướng dẫn Đăng ký để nhận & lưu trữ thư viện miễn phí.
+        </h1>
 
         {/* Yearly/Monthly Toggle Buttons */}
-        <div className='mt-6 relative'>
-          <div className='flex justify-center'>
-            <div className='bg-deepSlate flex py-1 px-1 rounded-full'>
-              <button
-                className={`text-xl font-medium cursor-pointer ${
-                  selectedCategory === 'yearly'
-                    ? 'text-primary bg-white rounded-full py-2 px-4 sm:py-4 sm:px-16'
-                    : 'text-white py-2 px-4 sm:py-4 sm:px-16'
-                }`}
-                onClick={() => handleCategoryChange('yearly')}>
-                Yearly
-              </button>
-              <button
-                className={`text-xl font-medium cursor-pointer ${
-                  selectedCategory === 'monthly'
-                    ? 'text-primary bg-white rounded-full py-2 px-4 sm:py-4 sm:px-16'
-                    : 'text-white py-2 px-4 sm:py-4 sm:px-16'
-                }`}
-                onClick={() => handleCategoryChange('monthly')}>
-                Monthly
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-16 mx-5 gap-6'>
-          {loading
-            ? Array.from({ length: 3 }).map((_, i) => <PlansSkeleton key={i} />)
-            : filteredData.map((item, index) => (
-                <div
-                  className='pt-10 pb-28 px-10 bg-white rounded-2xl shadow-lg relative hover:bg-primary group overflow-hidden'
-                  key={index}>
+        <div className="mt-6 relative">
+          <div className="bg-white rounded-2xl p-6 shadow-md mx-auto">
+            <p className="text-center text-2xl font-medium">
+              Học phí đã bao gồm
+            </p>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mt-5
+            "
+            >
+              {benefits.map((item, index) => (
+                <div key={index} className="flex items-center gap-3">
                   <Image
-                    src={item.imgSrc}
-                    alt='star-image'
-                    width={154}
-                    height={154}
-                    className='absolute bottom-[-4%] right-[-6%] opacity-10'
+                    src={item.icon}
+                    alt="benefit icon"
+                    width={24}
+                    height={24}
+                    className="mt-1 border border-gray-100 h-10 w-10 flex items-center justify-center rounded-2xl bg-gray-100"
                   />
-                  <h3 className='mb-8 text-midnight_text group-hover:text-white'>
-                    {item.heading}
-                  </h3>
-                  <button className='text-xl font-medium text-white w-full bg-primary hover:text-white group-hover:bg-deepSlate group-hover:border-deepSlate border-2 border-primary rounded-full py-4 px-12 mb-8 hover:cursor-pointer'>
-                    {item.button}
-                  </button>
-                  <p className='text-4xl sm:text-5xl font-semibold text-midnight_text mb-3 group-hover:text-white'>
-                    $
-                    {selectedCategory === 'monthly'
-                      ? item.price.monthly
-                      : item.price.yearly}
-                    <span className='text-lightgrey text-3xl sm:text-4xl'>
-                      {selectedCategory === 'monthly' ? '/mo' : '/yr'}
-                    </span>
+                  <p className="text-base lg:text-lg text-gray-700 leading-6">
+                    {item.text}
                   </p>
-                  <p className='text-lg font-normal text-black group-hover:text-white'>
-                    ${item.subscriber}
-                    <span>/ Subscriber</span>
-                  </p>
-                  <p className='text-lg font-normal text-black/40 mb-6 group-hover:text-white'>
-                    (per subscriber per month)
-                  </p>
-
-                  {/* Plan Features with icons */}
-                  <div className='mt-6'>
-                    {item.option.map((feature, idx) => (
-                      <div key={idx} className='flex gap-4 pt-4'>
-                        <Icon
-                          icon='tabler:circle-check-filled'
-                          className='text-2xl text-emerald-400'
-                        />
-                        <p className='text-lg font-medium text-black/60 group-hover:text-white/60'>
-                          {feature}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               ))}
+              <div className="mt-6">
+                <button
+                  className="bg-lime-400 hover:bg-lime-500 text-black font-medium text-base lg:text-lg p-2 rounded-xl transition"
+                  onClick={() => {
+                    setIsSignUpOpen(true);
+                  }}
+                >
+                  Nhận tài liệu miễn phí
+                </button>
+                {isSignUpOpen && (
+                  <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div
+                      ref={signUpRef}
+                      className="relative mx-auto w-full bg-white max-w-md overflow-hidden rounded-lg bg-dark_grey/90 backdrop-blur-md px-4 sm:px-8 pt-12 sm:pt-14 pb-6 sm:pb-8 text-center"
+                    >
+                      <button
+                        onClick={() => setIsSignUpOpen(false)}
+                        className="absolute top-4 right-4 sm:top-6 sm:right-6 hover:cursor-pointer z-10"
+                        aria-label="Close Sign Up Modal"
+                      >
+                        <Icon
+                          icon="mdi:close"
+                          className="text-gray-600 hover:text-gray-900 text-2xl sm:text-3xl transition-colors"
+                        />
+                      </button>
+                      <SignUp />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* BUTTON */}
+          </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Pricing
+export default Pricing;

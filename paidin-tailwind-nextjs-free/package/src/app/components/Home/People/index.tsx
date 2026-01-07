@@ -1,70 +1,74 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Icon } from '@iconify/react/dist/iconify.js'
+"use client";
+import SignUp from "../../Auth/SignUp";
+import { useEffect, useRef, useState } from "react";
+
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const People = () => {
+  const [sticky, setSticky] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
+  const signUpRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    setSticky(window.scrollY >= 80);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      signUpRef.current &&
+      !signUpRef.current.contains(event.target as Node)
+    ) {
+      setIsSignUpOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isSignUpOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isSignUpOpen]);
   const features = [
-    'Hơn 5.000 tài liệu đã được số hóa',
-    'Phân loại rõ ràng theo năng lực',
-    'Phù hợp nhiều trình độ học sinh',
-    'Có thể sử dụng cho: Soạn bài - Ra đề kiểm tra - Bài tập về nhà - Ôn luyện và đánh giá',
-    
-  ]
+    "Hơn 5.000 tài liệu đã được số hóa",
+    "Phân loại rõ ràng theo năng lực",
+    "Phù hợp nhiều trình độ học sinh",
+    "Có thể sử dụng cho: Soạn bài - Ra đề kiểm tra - Bài tập về nhà - Ôn luyện và đánh giá",
+  ];
 
   return (
-    <section className='pt-32 sm:pb-20 pb-10 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden' id='product'>
-      {/* Animated background elements */}
-      <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-        <div className='absolute top-0 left-0 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob'></div>
-        <div className='absolute top-0 right-0 w-96 h-96 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000'></div>
-        <div className='absolute bottom-0 left-1/2 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000'></div>
-      </div>
-      
-      <div className='container relative z-10'>
-        <div className='relative rounded-2xl px-8 py-8 bg-white/80 backdrop-blur-sm shadow-2xl border-shine'>
-          {/* Animated gradient border */}
-          <div className='absolute inset-0 rounded-2xl'>
-            <div className='absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-[length:200%_100%] animate-gradient-border opacity-75'></div>
-            <div className='absolute inset-[2px] rounded-2xl bg-white'></div>
-          </div>
-          
-          {/* Shining light effect */}
-          <div className='absolute inset-0 rounded-2xl overflow-hidden pointer-events-none'>
-            <div className='absolute inset-0 rounded-2xl border-shine-light'></div>
-          </div>
-          
-          <div className='relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch'>
-            {/* Left side - Image */}
-            <div className='order-2 lg:order-1 flex'>
-              <div className='relative w-full aspect-square lg:aspect-auto lg:h-full'>
-                <Image
-                  src=''
-                  alt='Đào tạo thực tế'
-                  width={600}
-                  height={600}
-                  className='w-full h-full object-cover'
-                />
+    <section className="pt-32 pb-20" id="product">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 space-x-1">
+          <div className="col-span-6 flex justify-center">
+            <div className="bg-Lightsuccess bg-[url('/images/people/bg-lines.png')] bg-no-repeat bg-contain bg-right-bottom w-full h-full flex flex-col gap-10 relative py-11 px-16 rounded-2xl after:absolute after:bg-[url('/images/people/quote.png')] after:w-48 after:h-40 after:-top-16 after:right-0">
+              <div>
+                <div>IMG</div>
               </div>
             </div>
-
-          {/* Right side - Content */}
-          <div className='order-1 lg:order-2 flex flex-col gap-3 h-full justify-between'>
-            <h2 className='text-3xl lg:text-5xl font-medium text-black'>
-             THƯ VIỆN 5.000 CÂU HỎI GỒM NHỮNG GÌ?
-            </h2>
-
-            <p className='text-lg lg:text-xl font-semibold text-green-600'>
-            Câu hỏi đã được sắp xếp & lưu trữ sẵn, Thầy/Cô không cần nhập lại từ đầu
-            </p>
-
-            <ul className='flex flex-col gap-3'>
+          </div>
+          <div className="col-span-6 flex flex-col gap-7 lg:pl-24 mt-10 lg:mt-0 ">
+            <h1 className="text-midnight_text  text-center lg:text-start! lg:leading-14 text-3xl md:text-2xl leading-16">
+              THƯ VIỆN 5000 CÂU HỎI GỒM NHỮNG GÌ?
+            </h1>
+            <ul className="flex flex-col gap-3">
               {features.map((feature, index) => (
-                <li key={index} className='flex items-start gap-3'>
+                <li key={index} className="flex items-start gap-3">
                   <Icon
-                    icon='mdi:check-circle'
-                    className='text-green-600 text-xl lg:text-2xl flex-shrink-0 mt-0.5'
+                    icon="mdi:check-circle"
+                    className="text-green-600 text-xl lg:text-2xl flex-shrink-0 mt-0.5"
                   />
-                  <span className='text-base lg:text-lg text-gray-700 leading-relaxed'>
+                  <span className="text-base lg:text-lg text-gray-700 leading-relaxed">
                     {feature}
                   </span>
                 </li>
@@ -72,18 +76,41 @@ const People = () => {
             </ul>
 
             <div>
-              <Link href='#'>
-                <button className='bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-base lg:text-lg py-4 px-8 rounded-lg transition duration-300 uppercase'>
-                  ĐĂNG KÝ NGAY
+              <div
+                onClick={() => {
+                  setIsSignUpOpen(true);
+                }}
+              >
+                <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-700 font-medium text-base lg:text-lg p-2 rounded-lg transition duration-300 ">
+                  Nhận tài liệu miễn phí
                 </button>
-              </Link>
+                {isSignUpOpen && (
+                  <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div
+                      ref={signUpRef}
+                      className="relative mx-auto w-full bg-white max-w-md overflow-hidden rounded-lg bg-dark_grey/90 backdrop-blur-md px-4 sm:px-8 pt-12 sm:pt-14 pb-6 sm:pb-8 text-center"
+                    >
+                      <button
+                        onClick={() => setIsSignUpOpen(false)}
+                        className="absolute top-4 right-4 sm:top-6 sm:right-6 hover:cursor-pointer z-10"
+                        aria-label="Close Sign Up Modal"
+                      >
+                        <Icon
+                          icon="mdi:close"
+                          className="text-gray-600 hover:text-gray-900 text-2xl sm:text-3xl transition-colors"
+                        />
+                      </button>
+                      <SignUp />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default People
+export default People;

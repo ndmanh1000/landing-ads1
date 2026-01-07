@@ -17,21 +17,27 @@ const HeaderData: headerItem[] = [
 const FeatureData: featureData[] = [
   {
     imgSrc: '/images/features/time.svg',
-    heading: 'Unpaid Bill Alerts',
+    heading: 'Giáo viên dạy thêm ngoài giờ hoặc lớp nhỏ',
     paragraph:
-      'Never miss a due date again. Get instant alerts for upcoming payments. Stay on top of your bills, effortlessly.',
+      '',
   },
   {
     imgSrc: '/images/features/signal.svg',
-    heading: 'Spending Insights',
+    heading: 'Giáo viên dạy tại trung tâm',
     paragraph:
-      'Track where your money goes. See spending by category. Make smarter choices with clear insights.',
+      '',
   },
   {
     imgSrc: '/images/features/dollar.svg',
-    heading: 'Card Management',
+    heading: 'Thầy/Cô muốn có nguồn câu hỏi ổn định để dùng lâu dài',
     paragraph:
-      'Link all your cards. Track balances and activity. Manage everything in one dashboard.',
+      '',
+  },
+  {
+    imgSrc: '/images/features/geneti.svg',
+    heading: 'Thầy/Cô muốn tiết kiệm thời gian soạn bài, ra đề',
+    paragraph:
+      '',
   },
 ]
 
