@@ -25,14 +25,21 @@ const SignUp = () => {
       },
       body: JSON.stringify(finalData),
     })
-      .then((res) => res.json())
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          // Handle API error responses (400, 500, etc.)
+          throw new Error(data.error || "Registration failed");
+        }
+        return data;
+      })
       .then((data) => {
         toast.success("Successfully registered");
         setLoading(false);
         router.push("/signin");
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(err.message || "An error occurred during registration");
         setLoading(false);
       });
   };
