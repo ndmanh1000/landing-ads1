@@ -6,7 +6,6 @@ import Business from "@/app/components/Home/Business";
 import Payment from "@/app/components/Home/Payment";
 import Pricing from "@/app/components/Home/Pricing";
 import { Metadata } from "next";
-import ContactForm from "./components/Contact/Form";
 export const metadata: Metadata = {
   title: "Paidin",
 };

@@ -63,9 +63,9 @@ const Features = () => {
           </div>
 
           {/* RIGHT: Image box */}
-          <div className="relative rounded-2xl border border-gray-200 overflow-hidden shadow-lg h-full min-h-[300px] md:min-h-[400px] lg:min-h-0">
+          <div className="relative rounded-2xl border border-gray-200 overflow-hidden shadow-lg h-full min-h-[300px] md:min-h-[400px] lg:min-h-0 bg-gradient-to-br from-blue-100 to-green-100">
             <Image
-              src="/images/feature-big.jpg" // đổi thành ảnh của bạn
+              src="/images/feature-big.jpg"
               alt="Feature Image"
               fill
               className="object-cover animate-feature-blur"

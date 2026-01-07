@@ -12,9 +12,8 @@ const NotFound = () => {
               <Image
                 src="/images/404.svg"
                 alt="image"
-                width={0}
-                height={0}
-                layout="responsive"
+                width={357}
+                height={382}
                 quality={100}
                 className="mx-auto max-w-full"
               />
