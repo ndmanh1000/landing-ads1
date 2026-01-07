@@ -47,11 +47,21 @@ const People = () => {
   ];
 
   return (
-    <section className="pt-32 pb-20" id="product">
-      <div className="container">
+    <section
+      className="pt-32 pb-20 relative"
+      id="product"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{
+          backgroundImage: "url('/images/logo/bg1.jpg')"
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-white/65"></div>
+      <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-4 lg:space-x-1">
           <div className="md:col-span-1 lg:col-span-6 flex justify-center">
-            <div className="bg-Lightsuccess bg-[url('/images/people/bg-lines.png')] bg-no-repeat bg-contain bg-right-bottom w-full max-w-md md:max-w-lg lg:max-w-none h-full flex flex-col gap-10 relative py-8 md:py-10 lg:py-11 px-8 md:px-12 lg:px-16 rounded-2xl after:absolute after:bg-[url('/images/people/quote.png')] after:w-40 md:after:w-44 lg:after:w-48 after:h-32 md:after:h-36 lg:after:h-40 after:-top-12 md:after:-top-14 lg:after:-top-16 after:right-0">
+            <div className="bg-Lightsuccess bg-[url('/images/people/bg-lines.png')] bg-no-repeat bg-contain bg-right-bottom w-full max-w-md md:max-w-lg lg:max-w-none h-full flex flex-col gap-10 relative py-8 md:py-10 lg:py-11 px-8 md:px-12 lg:px-16 rounded-2xl ">
               <div>
                 <div>IMG</div>
               </div>
@@ -75,7 +85,7 @@ const People = () => {
               ))}
             </ul>
 
-            <div>
+            <div className="flex justify-center lg:justify-start">
               <div
                 onClick={() => {
                   setIsSignUpOpen(true);

@@ -83,22 +83,22 @@ const Banner = () => {
               <div className="text-center lg:text-start max-w-2xl mx-auto lg:mx-0 mt-2">
                 <div className="flex items-stretch gap-2 lg:gap-4 justify-center lg:justify-start overflow-hidden">
                   <div className="flex flex-col flex-shrink-0 justify-center">
-                    <span className="text-black text-sm lg:text-2xl xl:text-3xl font-semibold whitespace-nowrap">
+                    <span className="text-black text-sm lg:text-xl  font-bold whitespace-nowrap">
                       Tiết kiệm
                     </span>
-                    <span className="text-black text-sm lg:text-2xl xl:text-3xl font-semibold whitespace-nowrap">
+                    <span className="text-black text-sm lg:text-xl  font-bold whitespace-nowrap">
                       thời gian
                     </span>
                   </div>
-                  <span className="text-primary text-2xl lg:text-4xl xl:text-6xl font-bold flex-shrink-0 flex items-center">
+                  <span className="text-primary text-2xl lg:text-3xl font-bold flex-shrink-0 flex items-center">
                     80%
                   </span>
                   <div className="mx-1 lg:mx-2 w-px bg-black/40 flex-shrink-0"></div>
                   <div className="flex flex-col flex-shrink-0 min-w-0 justify-center">
-                    <span className="text-primary text-sm lg:text-2xl xl:text-3xl font-bold whitespace-nowrap">
+                    <span className="text-primary text-sm lg:text-2xl  font-bold whitespace-nowrap">
                       56 tài khoản free
                     </span>
-                    <span className="text-black text-xs lg:text-xl xl:text-2xl font-medium whitespace-nowrap">
+                    <span className="text-black text-xs lg:text-lg font-medium whitespace-nowrap">
                       cho Thầy/Cô trải nghiệm
                     </span>
                   </div>
@@ -198,7 +198,7 @@ const Banner = () => {
             </div>
           </div>
           <div className="mt-10 lg:mt-0 lg:col-span-5">
-            <div className="flex justify-center md:justify-start lg:justify-center">
+            <div className="flex justify-center md:justify-center lg:justify-center">
               <div className="w-full md:max-w-md lg:max-w-none">
                 <Image
                   src="/images/hero/banner.webp"

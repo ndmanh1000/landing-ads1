@@ -27,7 +27,7 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features">
+    <section id="features" className="bg-gradient-to-br from-blue-50 via-white to-green-50 py-16">
       <div className="container">
         <h1 className="text-midnight_text text-center text-3xl md:text-2xl mb-5 max-w-2xl mx-auto sm:leading-16">
           Thư viện Blue Edu phù hợp với ai?
@@ -68,10 +68,11 @@ const Features = () => {
               src="/images/feature-big.jpg" // đổi thành ảnh của bạn
               alt="Feature Image"
               fill
-              className="object-cover"
+              className="object-cover animate-feature-blur"
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33.33vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent backdrop-blur-[0.5px] pointer-events-none"></div>
           </div>
         </div>
       </div>

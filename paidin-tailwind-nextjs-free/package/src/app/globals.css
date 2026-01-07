@@ -12,13 +12,11 @@
   --color-deepSlate: #6493ea;
 
   --text-86: 5.375rem;
-  
 
-  --background-image-header: linear-gradient(
-    120.3deg,
-    #d5f2ff 31.56%,
-    hsla(0, 0%, 100%, 0) 94.83%
-  );
+
+  --background-image-header: linear-gradient(120.3deg,
+      #d5f2ff 31.56%,
+      hsla(0, 0%, 100%, 0) 94.83%);
   --background-image-testimonial-bg: url('/images/people/bg-line.png');
 
   --leading-130: 130%;
@@ -35,6 +33,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -71,12 +70,16 @@ html {
 }
 
 @keyframes blob {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
+
   33% {
     transform: translate(30px, -50px) scale(1.1);
   }
+
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
@@ -86,11 +89,37 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes feature-blur-animate {
+
+  0%,
+  100% {
+    filter: blur(0px);
+    transform: scale(1);
+  }
+
+  25% {
+    filter: blur(2px);
+    transform: scale(1.02);
+  }
+
+  50% {
+    filter: blur(4px);
+    transform: scale(1.05);
+  }
+
+  75% {
+    filter: blur(2px);
+    transform: scale(1.02);
   }
 }
 
@@ -110,10 +139,15 @@ html {
   animation: gradient-border 3s ease infinite;
 }
 
+.animate-feature-blur {
+  animation: feature-blur-animate 6s ease-in-out infinite;
+}
+
 @keyframes shine {
   0% {
     transform: translateX(-100%) translateY(-100%) rotate(45deg);
   }
+
   100% {
     transform: translateX(100%) translateY(100%) rotate(45deg);
   }
@@ -131,12 +165,10 @@ html {
   right: -2px;
   bottom: -2px;
   border-radius: inherit;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.8) 50%,
-    transparent 70%
-  );
+  background: linear-gradient(45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 70%);
   background-size: 200% 200%;
   animation: shine-border 3s linear infinite;
   z-index: 1;
@@ -150,19 +182,17 @@ html {
   right: -3px;
   bottom: -3px;
   border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 60deg,
-    rgba(255, 255, 255, 1) 90deg,
-    rgba(255, 255, 255, 1) 120deg,
-    rgba(255, 255, 255, 0.8) 150deg,
-    transparent 180deg,
-    transparent 360deg
-  );
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 60deg,
+      rgba(255, 255, 255, 1) 90deg,
+      rgba(255, 255, 255, 1) 120deg,
+      rgba(255, 255, 255, 0.8) 150deg,
+      transparent 180deg,
+      transparent 360deg);
   animation: rotate-shine 3s linear infinite;
   z-index: 1;
-  mask: 
+  mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
@@ -174,6 +204,7 @@ html {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -183,6 +214,7 @@ html {
   0% {
     background-position: -200% -200%;
   }
+
   100% {
     background-position: 200% 200%;
   }

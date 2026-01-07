@@ -94,7 +94,7 @@ const Pricing = () => {
                   </p>
                 </div>
               ))}
-              <div className="mt-6">
+              <div className="mt-6 flex justify-center md:justify-start">
                 <button
                   className="bg-lime-400 hover:bg-lime-500 text-black font-medium text-base lg:text-lg p-2 rounded-xl transition"
                   onClick={() => {
