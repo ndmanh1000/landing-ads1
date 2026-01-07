@@ -51,10 +51,10 @@ const Banner = () => {
                 <div className="flex items-stretch gap-2 lg:gap-4 justify-center lg:justify-start overflow-hidden">
                   <div className="flex flex-col flex-shrink-0 justify-center">
                     <span className="text-black text-sm lg:text-xl  font-bold whitespace-nowrap">
-                      Tiết kiệm
+                      TIẾT KIỆM
                     </span>
                     <span className="text-black text-sm lg:text-xl  font-bold whitespace-nowrap">
-                      thời gian
+                      THỜI GIAN
                     </span>
                   </div>
                   <span className="text-primary text-2xl lg:text-3xl font-bold flex-shrink-0 flex items-center">
@@ -74,50 +74,31 @@ const Banner = () => {
               <div className="mt-4 max-w-full overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-3 justify-center lg:justify-start">
                   {/* Card 1: Truy cập tài liệu độc quyền */}
-                  <div className="bg-gray-100 border border-gray-300 rounded-lg p-2.5 lg:p-3 flex items-center gap-2 flex-1 min-w-0 transition-all duration-200 hover:shadow-md hover:border-gray-400">
-                    <div className="flex-shrink-0 relative">
-                      <Icon
-                        icon="mdi:file-document-multiple"
-                        className="text-green-400 text-2xl lg:text-3xl"
-                      />
-                      <Icon
-                        icon="mdi:lock"
-                        className="text-green-500 text-xs lg:text-sm absolute -top-1 -right-1 bg-white rounded-full p-0.5"
-                      />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-gray-800 font-medium text-xs lg:text-sm leading-tight break-words">
-                        Truy cập tài liệu độc quyền
+                  <div className="bg-gray-100 border border-gray-300 rounded-lg p-2.5 lg:p-3 flex items-center justify-center flex-1 min-w-0 transition-all duration-300 hover:shadow-md hover:border-gray-400 hover:scale-105 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+                    <div className="flex flex-col min-w-0 relative z-10">
+                      <span className="text-gray-800 font-medium text-xs lg:text-sm leading-tight break-words ">
+                        Tài liệu chuẩn BGD
                       </span>
                     </div>
                   </div>
 
                   {/* Card 2: Nhóm hỗ trợ học tập 24/7 */}
-                  <div className="bg-gray-100 border border-gray-300 rounded-lg p-2.5 lg:p-3 flex items-center gap-2 flex-1 min-w-0 transition-all duration-200 hover:shadow-md hover:border-gray-400">
-                    <div className="flex-shrink-0">
-                      <Icon
-                        icon="mdi:headset"
-                        className="text-green-400 text-2xl lg:text-3xl"
-                      />
-                    </div>
-                    <div className="flex flex-col min-w-0">
+                  <div className="bg-gray-100 border border-gray-300 rounded-lg p-2.5 lg:p-3 flex items-center justify-center flex-1 min-w-0 transition-all duration-300 hover:shadow-md hover:border-gray-400 hover:scale-105 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+                    <div className="flex flex-col min-w-0 relative z-10">
                       <span className="text-gray-800 font-medium text-xs lg:text-sm leading-tight break-words">
-                        Nhóm hỗ trợ học tập 24/7
+                        Dùng ngay cho giảng dạy
                       </span>
                     </div>
                   </div>
 
                   {/* Card 3: Chứng nhận hoàn thành khóa học */}
-                  <div className="bg-gray-100 border border-gray-300 rounded-lg p-2.5 lg:p-3 flex items-center gap-2 flex-1 min-w-0 transition-all duration-200 hover:shadow-md hover:border-gray-400">
-                    <div className="flex-shrink-0">
-                      <Icon
-                        icon="mdi:certificate"
-                        className="text-green-400 text-2xl lg:text-3xl"
-                      />
-                    </div>
-                    <div className="flex flex-col min-w-0">
+                  <div className="bg-gray-100 border border-gray-300 rounded-lg p-2.5 lg:p-3 flex items-center justify-center flex-1 min-w-0 transition-all duration-300 hover:shadow-md hover:border-gray-400 hover:scale-105 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+                    <div className="flex flex-col min-w-0 relative z-10">
                       <span className="text-gray-800 font-medium text-xs lg:text-sm leading-tight break-words">
-                        Chứng nhận hoàn thành khóa học
+                        Sử dụng trọn đời
                       </span>
                     </div>
                   </div>

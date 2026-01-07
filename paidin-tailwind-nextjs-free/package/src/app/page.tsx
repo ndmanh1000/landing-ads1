@@ -7,7 +7,7 @@ import Payment from "@/app/components/Home/Payment";
 import Pricing from "@/app/components/Home/Pricing";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Paidin",
+  title: "Blue Edu",
 };
 
 export default function Home() {

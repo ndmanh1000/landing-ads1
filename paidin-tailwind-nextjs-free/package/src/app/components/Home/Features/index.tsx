@@ -63,12 +63,12 @@ const Features = () => {
           </div>
 
           {/* RIGHT: Image box */}
-          <div className="relative rounded-2xl border border-gray-200 overflow-hidden shadow-lg h-full min-h-[300px] md:min-h-[400px] lg:min-h-0 bg-gradient-to-br from-blue-100 to-green-100">
+          <div className="relative rounded-2xl border border-gray-200 overflow-hidden shadow-lg h-full min-h-[300px] md:min-h-[400px] lg:min-h-0 ">
             <Image
-              src="/images/feature-big.jpg"
+              src="/images/logo/tap1.jpeg"
               alt="Feature Image"
               fill
-              className="object-cover animate-feature-blur"
+              className="object-cover"
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33.33vw"
             />
