@@ -1,45 +1,12 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+
 import Image from "next/image";
 
 import { Icon } from "@iconify/react/dist/iconify.js";
-import SignUp from "../../Auth/SignUp";
+
 
 const Banner = () => {
-  const [sticky, setSticky] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
-  const signUpRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = useCallback(() => {
-    setSticky(window.scrollY >= 80);
-  }, []);
-
-  const handleClickOutside = useCallback((event: MouseEvent) => {
-    if (
-      signUpRef.current &&
-      !signUpRef.current.contains(event.target as Node)
-    ) {
-      setIsSignUpOpen(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [handleScroll, handleClickOutside]);
-
-  useEffect(() => {
-    if (isSignUpOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [isSignUpOpen]);
   return (
     <section className="bg-header pt-28 lg:pb-14 overflow-hidden ">
       <div className="container">
@@ -158,9 +125,7 @@ const Banner = () => {
               </div>
               <div className="mx-auto lg:mx-0">
                 <div
-                  onClick={() => {
-                    setIsSignUpOpen(true);
-                  }}
+
                 >
                   <button
                     className="text-white font-medium text-base lg:text-lg p-2 rounded-lg transition-all duration-300 border border-primary bg-primary hover:bg-transparent hover:cursor-pointer hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95"
@@ -168,31 +133,7 @@ const Banner = () => {
                   >
                     Nhận tài liệu miễn phí
                   </button>
-                  {isSignUpOpen && (
-                    <div
-                      className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 p-4 animate-in fade-in duration-200"
-                      role="dialog"
-                      aria-modal="true"
-                      aria-labelledby="signup-modal-title"
-                    >
-                      <div
-                        ref={signUpRef}
-                        className="relative mx-auto w-full bg-white max-w-md overflow-hidden rounded-lg bg-dark_grey/90 backdrop-blur-md px-4 sm:px-8 pt-12 sm:pt-14 pb-6 sm:pb-8 text-center animate-in zoom-in-95 duration-200"
-                      >
-                        <button
-                          onClick={() => setIsSignUpOpen(false)}
-                          className="absolute top-4 right-4 sm:top-6 sm:right-6 hover:cursor-pointer z-10"
-                          aria-label="Close Sign Up Modal"
-                        >
-                          <Icon
-                            icon="mdi:close"
-                            className="text-gray-600 hover:text-gray-900 text-2xl sm:text-3xl transition-colors"
-                          />
-                        </button>
-                        <SignUp />
-                      </div>
-                    </div>
-                  )}
+
                 </div>
               </div>
             </div>

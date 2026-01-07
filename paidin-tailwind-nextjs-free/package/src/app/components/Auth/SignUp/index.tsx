@@ -7,42 +7,10 @@ import Logo from "@/app/components/Layout/Header/Logo";
 import { useState } from "react";
 import Loader from "@/app/components/Common/Loader";
 const SignUp = () => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
 
-    setLoading(true);
-    const data = new FormData(e.currentTarget);
-    const value = Object.fromEntries(data.entries());
-    const finalData = { ...value };
 
-    fetch("/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(finalData),
-    })
-      .then(async (res) => {
-        const data = await res.json();
-        if (!res.ok) {
-          // Handle API error responses (400, 500, etc.)
-          throw new Error(data.error || "Registration failed");
-        }
-        return data;
-      })
-      .then((data) => {
-        toast.success("Successfully registered");
-        setLoading(false);
-        router.push("/signin");
-      })
-      .catch((err) => {
-        toast.error(err.message || "An error occurred during registration");
-        setLoading(false);
-      });
-  };
+
 
   return (
     <>
@@ -62,7 +30,7 @@ const SignUp = () => {
         </span>
       </span> */}
 
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="mb-[22px]">
           <input
             type="text"
@@ -95,7 +63,7 @@ const SignUp = () => {
             type="submit"
             className="flex w-full items-center text-18 font-medium justify-center text-white rounded-md bg-primary px-5 py-3 transition duration-300 ease-in-out hover:bg-transparent hover:text-primary border-primary border hover:cursor-pointer"
           >
-            Gửi thông tin {loading && <Loader />}
+            Gửi thông tin
           </button>
         </div>
       </form>

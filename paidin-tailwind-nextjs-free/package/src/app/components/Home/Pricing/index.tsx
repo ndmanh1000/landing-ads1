@@ -1,45 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import SignUp from "../../Auth/SignUp";
+
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useEffect, useRef, useState } from "react";
+
 
 const Pricing = () => {
-  const [sticky, setSticky] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
-  const signUpRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = () => {
-    setSticky(window.scrollY >= 80);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      signUpRef.current &&
-      !signUpRef.current.contains(event.target as Node)
-    ) {
-      setIsSignUpOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isSignUpOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [isSignUpOpen]);
   const benefits = [
     {
       icon: "/images/pricing/setting1.svg",
@@ -97,32 +64,11 @@ const Pricing = () => {
               <div className="mt-6 flex justify-center md:justify-start">
                 <button
                   className="bg-lime-400 hover:bg-lime-500 text-black font-medium text-base lg:text-lg p-2 rounded-xl transition"
-                  onClick={() => {
-                    setIsSignUpOpen(true);
-                  }}
+
                 >
                   Nhận tài liệu miễn phí
                 </button>
-                {isSignUpOpen && (
-                  <div className="fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 p-4">
-                    <div
-                      ref={signUpRef}
-                      className="relative mx-auto w-full bg-white max-w-md overflow-hidden rounded-lg bg-dark_grey/90 backdrop-blur-md px-4 sm:px-8 pt-12 sm:pt-14 pb-6 sm:pb-8 text-center"
-                    >
-                      <button
-                        onClick={() => setIsSignUpOpen(false)}
-                        className="absolute top-4 right-4 sm:top-6 sm:right-6 hover:cursor-pointer z-10"
-                        aria-label="Close Sign Up Modal"
-                      >
-                        <Icon
-                          icon="mdi:close"
-                          className="text-gray-600 hover:text-gray-900 text-2xl sm:text-3xl transition-colors"
-                        />
-                      </button>
-                      <SignUp />
-                    </div>
-                  </div>
-                )}
+
               </div>
             </div>
 
